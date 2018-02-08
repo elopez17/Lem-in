@@ -19,6 +19,7 @@ static void printdata(t_lem *e)
 	, e->start.name, e->start.ant, e->start.pos.x, e->start.pos.y, e->start.connect);
 	for (int i = 0; i < e->start.connect; i++)
 		ft_printf(" %s ", e->start.names[i]);
+	ft_printf("\nsteps to end=%d   checked=%d\n", e->start.steps, e->start.checked);
 	ft_printf("\n");
 	while (tmp != NULL)
 	{
@@ -26,6 +27,7 @@ static void printdata(t_lem *e)
 		, tmp->name, tmp->ant, tmp->pos.x, tmp->pos.y, tmp->connect);
 		for (int i = 0; i < tmp->connect; i++)
 			ft_printf(" %s ", tmp->names[i]);
+	ft_printf("\nsteps to end=%d   checked=%d\n", tmp->steps, tmp->checked);
 		ft_printf("\n");
 		tmp = tmp->next;
 	}
@@ -33,6 +35,7 @@ static void printdata(t_lem *e)
 	, e->end.name, e->end.ant, e->end.pos.x, e->end.pos.y, e->end.connect);
 	for (int i = 0; i < e->end.connect; i++)
 		ft_printf(" %s ", e->end.names[i]);
+	ft_printf("\nsteps to end=%d   checked=%d\n", e->end.steps, e->end.checked);
 	ft_printf("\n");
 }*/
 
@@ -44,7 +47,7 @@ int	main()
 	getdata(&e);
 	if (e.n_ants == 0 || e.n_rooms == 0 || e.start.ant == -1 || e.end.ant == -1)
 		lem_error(0);
-//	printdata(&e);
 	set_steps(&e);
+//	printdata(&e);
 	return (0);
 }

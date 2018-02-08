@@ -31,4 +31,8 @@ void	set_steps(t_lem *e)
 		while ((tmp = findnode(e, "\0", level)) != NULL)
 			set_members(e, tmp);
 	}
+	tmp = findnode(e, e->start.name, 0);
+	e->start = *tmp;
+	tmp = findnode(e, e->end.name, 0);
+	e->end = *tmp;
 }
