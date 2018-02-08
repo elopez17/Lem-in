@@ -6,6 +6,7 @@ static void	init(t_lem *e)
 	e->n_rooms = 0;
 	e->start.ant = -1;
 	e->end.ant = -1;
+	e->r = (t_room*)NULL;
 }
 
 int	main()

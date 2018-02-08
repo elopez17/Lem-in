@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 00:28:31 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/08 02:46:53 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ typedef struct	s_coord
 
 typedef struct	s_room
 {
-	char	*name;
-	int		ant;
-	t_coord	pos;
+	char			*name;
+	int				ant;
+	t_coord			pos;
+	struct s_room	*next; 
 }				t_room;
 
 typedef struct	s_lem
@@ -57,6 +58,7 @@ typedef struct	s_lem
 }				t_lem;
 
 void	getdata(t_lem *e);
+void	addnode(t_lem *e, t_room new);
 void	lem_error(int code);
 
 #endif
