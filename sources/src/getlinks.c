@@ -7,7 +7,7 @@ static void	init_links(t_lem *e)
 	tmp = e->r;
 	while (tmp != NULL)
 	{
-		tmp->steps = e->n_rooms;
+		tmp->steps = e->n_rooms + 1;
 		tmp->checked = 0;
 		tmp->names = (char**)ft_memalloc(sizeof(char*) * (e->n_rooms + 1));
 		tmp = tmp->next;
