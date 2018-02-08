@@ -1,6 +1,6 @@
 #include <lem-in.h>
 
-static void		get_n_ants(char *line)
+static int		get_n_ants(char *line)
 {
 	int	i;
 
@@ -32,37 +32,38 @@ static t_room	get_room(t_lem *e, char *line)
 	room.pos.x = ft_atoi(line + i);
 	room.pos.y = ft_atoi(ft_strrchr(line, ' '));
 	room.next = NULL;
+	room.connect = 0;
 	++(e->n_rooms);
 	return (room);
 }
 
 static void		get_command(t_lem *e, char *line)
 {
-	char	*nextline;
+	char	*nxline;
 
 	if (ft_strstr(line, "start"))
 	{
 		if (e->start.ant != -1 && (e->start.ant = -1) == -1)
 			return ;
-		if (get_next_line(0, &nextline) <= 0)
+		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -1)
 			return ;
-		e->start = get_room(e, nextline);
+		e->start = get_room(e, nxline);
 		e->start.ant = e->n_ants;
-		//addnode(e, e->start);
+		addnode(e, e->start);
 	}
 	else if (ft_strstr(line, "end"))
 	{
 		if (e->end.ant != -1 && (e->end.ant = -1) == -1)
 			return ;
-		if (get_next_line(0, &nextline) <= 0)
+		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -1)
 			return ;
-		e->end = get_room(e, nextline);
+		e->end = get_room(e, nxline);
 		e->end.ant = 0;
-		//addnode(e, e->end);
+		addnode(e, e->end);
 	}
 	else
 		return ;
-	ft_strdel(&nextline);
+	ft_strdel(&nxline);
 }
 
 void			getdata(t_lem *e)
