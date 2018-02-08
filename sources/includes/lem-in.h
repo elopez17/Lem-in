@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 04:33:47 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/08 14:40:31 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct	s_room
 	t_coord			pos;
 	int				connect;
 	char			**names;
+	int				steps;
+	int				checked;
 	struct s_room	*next; 
 }				t_room;
 
@@ -61,7 +63,9 @@ typedef struct	s_lem
 
 void	getdata(t_lem *e);
 void	get_links(t_lem *e, char *line);
+void	set_steps(t_lem *e);
 void	addnode(t_lem *e, t_room new);
+t_room	*findnode(t_lem *e, char *name, int level);
 void	lem_error(int code);
 
 #endif
