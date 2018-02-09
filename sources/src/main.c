@@ -8,7 +8,7 @@ static void	init(t_lem *e)
 	e->end.ant = -1;
 	e->r = (t_room*)NULL;
 }
-
+/*
 static void printdata(t_lem *e)
 {
 	t_room	*tmp;
@@ -37,7 +37,7 @@ static void printdata(t_lem *e)
 		ft_printf(" %s ", e->end.names[i]);
 	ft_printf("\nsteps to end=%d   checked=%d\n", e->end.steps, e->end.checked);
 	ft_printf("\n");
-}
+}*/
 
 int	main()
 {
@@ -50,6 +50,7 @@ int	main()
 	set_steps(&e);
 	if (e.start.steps == e.n_rooms + 1)
 		lem_error(0);
-	printdata(&e);
+//	printdata(&e);
+	move_ants(&e);
 	return (0);
 }
