@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   move_ants.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/08 20:35:01 by eLopez            #+#    #+#             */
+/*   Updated: 2018/02/08 20:36:38 by eLopez           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem-in.h>
 
 static void		del_ants(t_ants **ant, int n_ants)
@@ -44,8 +56,7 @@ static int		findroom(t_lem *e, t_ants *ant, int i)
 		return (0);
 	tmp->ant = 0;
 	ft_strdel(&(ant[i].room));
-	ant[i].room = ft_strdup(hold->name);
-	ft_printf("L%d-%s ", i + 1, ant[i].room);
+	ft_printf("L%d-%s ", i + 1, (ant[i].room = ft_strdup(hold->name)));
 	if (ft_strequ(ant[i].room, e->end.name))
 		return (1);
 	hold->ant = 1;

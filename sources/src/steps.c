@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   steps.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/08 20:40:02 by eLopez            #+#    #+#             */
+/*   Updated: 2018/02/08 20:40:17 by eLopez           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem-in.h>
 
 static void	set_members(t_lem *e, t_room *tmp)
@@ -22,9 +34,7 @@ void	set_steps(t_lem *e)
 
 	tmp = findnode(e, e->end.name, 0);
 	tmp->steps = 0;
-	set_members(e, tmp);// this func will set all of its members to next level.
-	//so far E's members(level1) have been set. next is to find those level1s
-	// and set their members
+	set_members(e, tmp);
 	level = 0;
 	while (++level <= e->n_rooms)
 	{

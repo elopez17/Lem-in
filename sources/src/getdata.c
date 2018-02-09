@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getdata.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/08 20:37:10 by eLopez            #+#    #+#             */
+/*   Updated: 2018/02/08 21:41:15 by eLopez           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem-in.h>
 
 static int		get_n_ants(char *line)
@@ -37,6 +49,23 @@ static t_room	get_room(t_lem *e, char *line)
 	return (room);
 }
 
+static int		clr_command(char *line)
+{
+	if (ft_strstr(line, "blue"))
+		ft_printf("%{BL}");
+	else if (ft_strstr(line, "cyan"))
+		ft_printf("%{TQ}");
+	else if (ft_strstr(line, "red"))
+		ft_printf("%{RD}");
+	else if (ft_strstr(line, "purple"))
+		ft_printf("%{PU}");
+	else if (ft_strstr(line, "green"))
+		ft_printf("%{GR}");
+	else if (ft_strstr(line, "yellow"))
+		ft_printf("%{YL}");
+	return (1);
+}
+
 static void		get_command(t_lem *e, char *line)
 {
 	char	*nxline;
@@ -45,7 +74,7 @@ static void		get_command(t_lem *e, char *line)
 	{
 		if (e->start.ant != -1 && (e->start.ant = -1) == -1)
 			return ;
-		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -1)
+		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -10)
 			return ;
 		e->start = get_room(e, nxline);
 		e->start.ant = e->n_ants;
@@ -55,13 +84,11 @@ static void		get_command(t_lem *e, char *line)
 	{
 		if (e->end.ant != -1 && (e->end.ant = -1) == -1)
 			return ;
-		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -1)
+		if (get_next_line(0, &nxline) <= 0 || ft_printf("%s\n", nxline) == -10)
 			return ;
-		e->end = get_room(e, nxline);
-		e->end.ant = 0;
-		addnode(e, e->end);
+		addnode(e, (e->end = get_room(e, nxline)));
 	}
-	else
+	else if (clr_command(line))
 		return ;
 	ft_strdel(&nxline);
 }
@@ -72,7 +99,7 @@ void			getdata(t_lem *e)
 	int		line_n;
 
 	line_n = 0;
-	while (get_next_line(0, &line) > 0 && ft_printf("%s\n", line) != -1)
+	while (get_next_line(0, &line) > 0 && ft_printf("%s\n", line) != -10)
 	{
 		if (line[0] == '#' && line[1] != '#')
 		{

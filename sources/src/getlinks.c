@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   getlinks.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/02/08 20:38:26 by eLopez            #+#    #+#             */
+/*   Updated: 2018/02/08 21:42:05 by eLopez           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <lem-in.h>
 
 static void	init_links(t_lem *e)
@@ -55,8 +67,13 @@ void	get_links(t_lem *e, char *line)
 	findlist(e, s1, s2);
 	ft_strdel(&s1);
 	ft_strdel(&s2);
-	while (get_next_line(0, &s) > 0 && ft_printf("%s\n", s) != -1)
+	while (get_next_line(0, &s) > 0 && ft_printf("%s\n", s) != -10)
 	{
+		if (s[0] == '#' && s[1] != '#')
+		{
+			ft_strdel(&s);
+			continue ;
+		}
 		if (ft_countwords(s, ' ') != 1 || ft_countwords(s, '-') != 2)
 			lem_error(0);
 		s1 = ft_strcsub(s, '-');
