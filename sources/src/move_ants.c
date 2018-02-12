@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:35:01 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:36:38 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:19:41 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 static void		del_ants(t_ants **ant, int n_ants)
 {

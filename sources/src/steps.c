@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:40:02 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:40:17 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:26:39 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 static void	set_members(t_lem *e, t_room *tmp)
 {
@@ -27,7 +27,7 @@ static void	set_members(t_lem *e, t_room *tmp)
 	tmp->checked = 1;
 }
 
-void	set_steps(t_lem *e)
+void		set_steps(t_lem *e)
 {
 	t_room	*tmp;
 	int		level;

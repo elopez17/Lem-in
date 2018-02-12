@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:37:10 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 21:41:15 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:19:07 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 static int		get_n_ants(char *line)
 {

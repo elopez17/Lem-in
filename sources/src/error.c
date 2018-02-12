@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:37:01 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:37:03 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:18:55 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 void	lem_error(int code)
 {

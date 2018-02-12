@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:39:20 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:39:27 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:19:23 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 t_room	*findnode(t_lem *e, char *name, int level)
 {

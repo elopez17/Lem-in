@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem-in.h                                           :+:      :+:    :+:   */
+/*   lemin.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:31:12 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:18:15 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEMIN_H
-# define LEMIN_H
+#ifndef _LEMIN_H
+# define _LEMIN_H
 # include <mlx.h>
 # include <libft.h>
 # include <ft_printf.h>
@@ -54,7 +54,7 @@ typedef struct	s_room
 	char			**names;
 	int				steps;
 	int				checked;
-	struct s_room	*next; 
+	struct s_room	*next;
 }				t_room;
 
 typedef struct	s_lem
@@ -66,12 +66,12 @@ typedef struct	s_lem
 	t_room	*r;
 }				t_lem;
 
-void	getdata(t_lem *e);
-void	get_links(t_lem *e, char *line);
-void	set_steps(t_lem *e);
-void	move_ants(t_lem *e);
-void	addnode(t_lem *e, t_room new);
-t_room	*findnode(t_lem *e, char *name, int level);
-void	lem_error(int code);
+void			getdata(t_lem *e);
+void			get_links(t_lem *e, char *line);
+void			set_steps(t_lem *e);
+void			move_ants(t_lem *e);
+void			addnode(t_lem *e, t_room new);
+t_room			*findnode(t_lem *e, char *name, int level);
+void			lem_error(int code);
 
 #endif

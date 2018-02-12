@@ -6,11 +6,11 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:34:53 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 20:34:56 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 16:27:46 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
 
 static void	init(t_lem *e)
 {
@@ -35,7 +35,7 @@ static void	lem_memdel(t_lem *e)
 	}
 }
 
-int	main()
+int			main(void)
 {
 	t_lem	e;
 

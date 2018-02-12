@@ -6,11 +6,12 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:38:26 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/08 21:42:05 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/11 17:39:55 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <lem-in.h>
+#include <lemin.h>
+#define FINDLIST(e, s1, s2)({findlist(e,s1,s2);ft_strdel(&s1);ft_strdel(&s2);})
 
 static void	init_links(t_lem *e)
 {
@@ -52,7 +53,7 @@ static void	findlist(t_lem *e, char *s1, char *s2)
 	++(tmp2->connect);
 }
 
-void	get_links(t_lem *e, char *line)
+void		get_links(t_lem *e, char *line)
 {
 	char	*s;
 	char	*s1;
@@ -64,24 +65,18 @@ void	get_links(t_lem *e, char *line)
 	s1 = ft_strcsub(line, '-');
 	s2 = ft_strcsub(ft_strchr(line, '-') + 1, '\0');
 	(s1 == NULL || s2 == NULL || ft_strequ(s1, s2)) ? lem_error(0) : 0;
-	findlist(e, s1, s2);
-	ft_strdel(&s1);
-	ft_strdel(&s2);
+	FINDLIST(e, s1, s2);
 	while (get_next_line(0, &s) > 0 && ft_printf("%s\n", s) != -10)
 	{
+		(s[0] == '#' && s[1] != '#') ? ft_strdel(&s) : 0;
 		if (s[0] == '#' && s[1] != '#')
-		{
-			ft_strdel(&s);
 			continue ;
-		}
 		if (ft_countwords(s, ' ') != 1 || ft_countwords(s, '-') != 2)
 			lem_error(0);
 		s1 = ft_strcsub(s, '-');
 		s2 = ft_strcsub(ft_strchr(s, '-') + 1, '\0');
 		(s1 == NULL || s2 == NULL || ft_strequ(s1, s2)) ? lem_error(0) : 0;
-		findlist(e, s1, s2);
-		ft_strdel(&s1);
-		ft_strdel(&s2);
+		FINDLIST(e, s1, s2);
 		ft_strdel(&s);
 	}
 }
