@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:37:10 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/11 16:19:07 by elopez           ###   ########.fr       */
+/*   Updated: 2018/02/12 13:08:20 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void			getdata(t_lem *e)
 			e->n_ants = get_n_ants(line);
 		else if (line[0] == '#' && line[1] == '#')
 			get_command(e, line);
-		else if (ft_countwords(line, ' ') == 3)
+		else if (ft_countwords(line, ' ') == 3 && line[0] != 'L')
 			addnode(e, get_room(e, line));
 		else
 			get_links(e, line);
