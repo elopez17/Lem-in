@@ -18,14 +18,11 @@ WHT		= \x1b[37m
 CC		= gcc
 CFLAGS	= -Wall -Wextra
 SRC		= error.c getdata.c getlinks.c list.c main.c move_ants.c steps.c
-VSRC	= $(shell ls sources/visual | grep -E ".+\.c")
 ODIR	:= sources/obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
-VOBJ	:= $(addprefix $(ODIR)/,$(VSRC:%.c=%.o))
 INC		= sources/includes
 LIB		= sources/libft.a
 EX		= lem-in
-BONUS	= visualizer
 
 all: $(LIB) $(EX)
 
@@ -35,7 +32,7 @@ $(EX): $(OBJ)
 
 $(ODIR)/%.o:sources/src/%.c | $(ODIR)
 	@printf "$(GRN)▋"
-	@$(CC) $(CFLAGS) -I $(INC) -I sources/minilibx -o $@ -c $<
+	@$(CC) $(CFLAGS) -I $(INC) -o $@ -c $<
 
 $(ODIR):
 	@mkdir $(ODIR)
@@ -43,23 +40,15 @@ $(ODIR):
 $(LIB):
 	@make -C sources/libft/
 
-$(BONUS): $(LIB) $(OBJ) $(VOBJ)
-	@make -C sources/minilibx/
-	@$(CC) $(CFLAGS) -I $(INC) -I sources/minilibx -o $(BONUS) $(VOBJ) -L sources -lft -L sources/minilibx -lmlx -framework OpenGL -framework AppKit
-
-$(ODIR)/%.o:sources/visual/%.c | $(ODIR)
-	@$(CC) $(CFLAGS) -I $(INC) -I sources/minilibx -o $@ -c $<
-
 clean:
 	@rm -rf sources/obj
 	@make -C sources/libft/ clean
-	@make -C sources/minilibx/ clean
 
 fclean: clean
-	@rm -f $(EX) $(BONUS)
+	@rm -f $(EX)
 	@make -C sources/libft/ fclean
 
 re: fclean all
 
-.PHONY: clean fclean all re visual
+.PHONY: clean fclean all re
 

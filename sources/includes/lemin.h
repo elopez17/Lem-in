@@ -6,13 +6,12 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 00:06:40 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/11 16:18:15 by elopez           ###   ########.fr       */
+/*   Updated: 2018/02/12 11:56:38 by elopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef _LEMIN_H
 # define _LEMIN_H
-# include <mlx.h>
 # include <libft.h>
 # include <ft_printf.h>
 # include <get_next_line.h>
