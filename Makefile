@@ -17,7 +17,7 @@ TURQ	= \x1b[36m
 WHT		= \x1b[37m
 CC		= gcc
 CFLAGS	= -Wall -Wextra
-SRC		= $(shell ls sources/src | grep -E ".+\.c")
+SRC		= error.c getdata.c getlinks.c list.c main.c move_ants.c steps.c
 VSRC	= $(shell ls sources/visual | grep -E ".+\.c")
 ODIR	:= sources/obj
 OBJ		:= $(addprefix $(ODIR)/,$(SRC:%.c=%.o))
@@ -27,13 +27,14 @@ LIB		= sources/libft.a
 EX		= lem-in
 BONUS	= visualizer
 
-
 all: $(LIB) $(EX)
 
 $(EX): $(OBJ)
 	@$(CC) $(CFLAGS) -I $(INC) -o $(EX) $(OBJ) -L./sources/ -lft
+	@printf "\n"
 
 $(ODIR)/%.o:sources/src/%.c | $(ODIR)
+	@printf "$(GRN)▋"
 	@$(CC) $(CFLAGS) -I $(INC) -I sources/minilibx -o $@ -c $<
 
 $(ODIR):

@@ -6,7 +6,7 @@
 #    By: elopez <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/18 23:40:47 by elopez            #+#    #+#              #
-#    Updated: 2017/11/12 19:33:46 by eLopez           ###   ########.fr        #
+#    Updated: 2018/02/11 18:45:10 by elopez           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NO_COLOR= \x1b[0m
@@ -39,9 +39,9 @@ all: $(NAME)
 $(NAME): $(OBJ) 
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@echo "$(GRN)[Library Compilation was Successful!]$(NO_COLOR)"
 
 $(ODIR)/%.o:%.c | $(ODIR)
+	@printf "$(GRN)▋"
 	@$(CC) $(CFLAGS) -I ../includes -o $@ -c $<
 
 $(ODIR):
