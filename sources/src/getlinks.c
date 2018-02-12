@@ -6,7 +6,7 @@
 /*   By: eLopez <elopez@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 20:38:26 by eLopez            #+#    #+#             */
-/*   Updated: 2018/02/12 11:22:51 by eLopez           ###   ########.fr       */
+/*   Updated: 2018/02/12 11:44:13 by eLopez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static void	findlist(t_lem *e, char *s1, char *s2)
 	++(tmp2->connect);
 }
 
+static int	is_comment(char **str)
+{
+	if ((*str)[0] == '#' && (*str)[1] != '#')
+	{
+		ft_strdel(str);
+		return (1);
+	}
+	return (0);
+}
+
 void		get_links(t_lem *e, char *line)
 {
 	char	*s;
@@ -68,11 +78,8 @@ void		get_links(t_lem *e, char *line)
 	FINDLIST(e, s1, s2);
 	while (get_next_line(0, &s) > 0 && ft_printf("%s\n", s) != -10)
 	{
-		if (s[0] == '#' && s[1] != '#')
-		{
-			ft_strdel(&s);
+		if (is_comment(&s))
 			continue ;
-		}
 		if (ft_countwords(s, ' ') != 1 || ft_countwords(s, '-') != 2)
 			lem_error(0);
 		s1 = ft_strcsub(s, '-');
